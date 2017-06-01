@@ -3,10 +3,10 @@
  * Created by PhpStorm.
  * User: ondrej
  * Date: 1.6.17
- * Time: 15:57
+ * Time: 15:48
  */
 
-namespace App;
+namespace AdminModule;
 
 use Nette;
 use Nette\Application\Routers\Route;
@@ -20,9 +20,8 @@ class RouterFactory
 	 */
 	public static function createRouter()
 	{
-		$router = new RouteList;
-		$router[] = \AdminModule\RouterFactory::createRouter();
-		$router[] = \FrontModule\RouterFactory::createRouter();
+		$router = new RouteList("Admin");
+		$router[] = new Route('admin/<presenter>/<action>[/<id>]', 'Homepage:default');
 		return $router;
 	}
 }
